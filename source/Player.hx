@@ -10,6 +10,7 @@ import flixel.util.FlxGradient;
 import flixel.util.FlxMath;
 
 import flixel.addons.ui.FlxInputText;
+import flixel.util.FlxPoint;
 
 class Player extends FlxSprite {
 	/** test */
@@ -37,7 +38,7 @@ class Player extends FlxSprite {
 	public function buildDebuggingMenu() {
 		var currentHeight:Float = this.y;
 		var inspectedObject = this;
-		var menu:FlxSprite = new FlxSprite(this.x + this.width + 15, this.y - 5).makeGraphic(Std.int(this.width + 70 + 50), Std.int(this.tweakable.length * 20 + 20), 0x66444444);
+		var menu:FlxSprite = new FlxSprite(this.x + this.width + 15, this.y - 5);
 
 		this.debuggingMenu = menu;
 		this.debuggingItems = [];
@@ -45,12 +46,29 @@ class Player extends FlxSprite {
 		FlxG.state.add(menu);
 
 		for (fieldName in this.tweakable) {
-			var dbg:DebugVariable = new DebugVariable(this.x + this.width + 20, currentHeight, fieldName, inspectedObject);
+			// Determine the type of the field.
+			var value:Dynamic = Reflect.field(inspectedObject, fieldName);
+			var variableType = Type.getClassName(Type.getClass(value));
+			if (variableType == null) {
+				variableType = Std.string(Type.typeof(value));
+			}
+
+			var dbg:DebugVariable;
+
+			if (variableType == "TInt" || variableType == "String") {
+				 dbg = new DebugNumber(this.x + this.width + 20, currentHeight, fieldName, inspectedObject);
+			} else if (variableType.indexOf("FlxPoint") != -1) {
+				 dbg = new DebugPoint(this.x + this.width + 20, currentHeight, fieldName, inspectedObject);
+			} else {
+				dbg = null; // catchall for the compiler's sake
+			}
 
 			this.debuggingItems.push(dbg);
 
 			currentHeight += dbg.height + 10;
 		}	
+
+		menu.makeGraphic(Std.int(this.width + 70 + 50), Std.int(currentHeight), 0x66444444);
 
 		hideDebuggingMenu();
 	}

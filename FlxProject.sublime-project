@@ -13,17 +13,16 @@
 		},
 		{
 			"follow_symlinks": true,
-			"name": "Flixel",
-			"path": "/usr/lib/haxe/lib/flixel/3,0,0-alpha"
-		},
-		{
-			"follow_symlinks": true,
 			"name": "Flixel Addons",
 			"path": "/usr/lib/haxe/lib/flixel-addons/git"
 		},
 		{
 			"follow_symlinks": true,
 			"path": "/usr/lib/haxe/lib/flixel-ui"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/usr/lib/haxe/lib/flixel/3,0,1/flixel"
 		}
 	]
 }
