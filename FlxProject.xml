@@ -24,13 +24,17 @@
 	<haxelib name="openfl" />
 	<haxelib name="flixel-ui"/>
 	<haxelib name="flixel-addons"/>
+
+	<haxeflag name="--remap flash:flash" />
+	<haxeflag name="--macro include('game')" />
 	
 	<!--In case you want to use the addons package-->
 	
 	<!--In case you want to use the ui package-->
 	
 	<!--Enable this for nape release builds for a serious peformance improvement-->
-	<!--<haxedef name="NAPE_RELEASE_BUILD"/>--> 
+	<haxedef name="LOAD_CONFIG_REAL_TIME"/>--> 
+	
 	
 	<!--Enable experimental threading support for cpp targets-->
 	<!--<haxedef name="FLX_THREADING" />-->
