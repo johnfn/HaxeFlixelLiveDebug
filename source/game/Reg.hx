@@ -12,4 +12,11 @@ class Reg {
 
 	/** Current game state. */
 	static public var state:FlxState; 
+
+	static public var player:Player;
+	static public var mapX:Int = 0;	
+	static public var mapY:Int = 0;	
+
+	static public var mapWidth:Int = 25 * 30;
+	static public var mapHeight:Int = 25 * 30;
 }

@@ -7,6 +7,8 @@ import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
 
+import flixel.FlxCamera;
+
 
 // ctrl-i generate import statement.
 
@@ -17,7 +19,36 @@ class PlayState extends FlxState {
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
-	 public var level:TiledLevel;
+	public var level:TiledLevel;
+
+    public function checkUpdateScreen() {
+        var change:Bool = false;
+
+        if (Reg.player.x > (Reg.mapX + 1) * Reg.mapWidth) {
+                Reg.mapX++;
+                change = true;
+        }
+
+        if (Reg.player.x < Reg.mapX * Reg.mapWidth) {
+                Reg.mapX--;
+                change = true;
+        }
+
+        if (Reg.player.y > (Reg.mapY + 1) * Reg.mapHeight) {
+                Reg.mapY++;
+                change = true;
+        }
+
+        if (Reg.player.y < Reg.mapY * Reg.mapHeight) {
+                Reg.mapY--;
+                change = true;
+        }
+
+        if (change) {
+        	trace(Reg.mapX, Reg.mapY);
+            FlxG.camera.setBounds(Reg.mapX * Reg.mapWidth, Reg.mapY * Reg.mapHeight, Reg.mapWidth, Reg.mapHeight, true);
+        }
+    }
 
 
 	override public function create():Void {
@@ -42,6 +73,11 @@ class PlayState extends FlxState {
         add(level.foregroundTiles);
         add(level.backgroundTiles);
         level.loadObjects(this);
+
+        Reg.player = p;
+
+        FlxG.camera.follow(Reg.player, FlxCamera.STYLE_PLATFORMER);
+
 	}
 
 	/**
@@ -58,6 +94,9 @@ class PlayState extends FlxState {
 	override public function update():Void {
 		super.update();
 
+		checkUpdateScreen();
+
+#if debug
 		if (FlxG.keys.justPressed.R) {
 			this.remove(level.foregroundTiles);
 			this.remove(level.backgroundTiles);
@@ -67,5 +106,6 @@ class PlayState extends FlxState {
 	        add(level.backgroundTiles);
 	        level.loadObjects(this);
 		}
+#end
 	}	
 }

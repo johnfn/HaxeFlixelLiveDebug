@@ -15,15 +15,15 @@ import flixel.addons.editors.tiled.TiledTileSet;
 import haxe.macro.Context;
 
 /*
-NOTE
+        NOTE
 
-If you want to use this class, you're going to have to add 2 lines to your openfl xml project file:
+        If you want to use this class, you're going to have to add 2 lines to your openfl xml project file:
 
-<haxeflag name="--remap flash:flash" />
-<haxeflag name="--macro include('<package>')" /> // this is the package that your classes are in.
+        <haxeflag name="--remap flash:flash" />
+        <haxeflag name="--macro include('<package>')" /> // this is the package that your classes are in.
 
-This is to explicitly reference all the classes in <package>, so that Type.resolveClass can resolve them from strings. Unfortunately you
-can't just do import package.*, since that doesn't bring in anything except the classes you reference in this file. 
+        This is to explicitly reference all the classes in <package>, so that Type.resolveClass can resolve them from strings. Unfortunately you
+        can't just do import package.*, since that doesn't bring in anything except the classes you reference in this file. 
 
 */
 
