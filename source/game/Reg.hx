@@ -1,6 +1,7 @@
 package game;
 
 import flixel.FlxState;
+import flixel.group.FlxGroup;
 import flixel.util.FlxSave;
 
 /**
@@ -12,6 +13,8 @@ class Reg {
 	static public var FPS:Int = 60;
 
 	static public var map:TiledLevel;
+
+	static public var inactives:FlxGroup = new FlxGroup();
 
 	/** Current game state. */
 	static public var state:FlxState; 

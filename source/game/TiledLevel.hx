@@ -23,7 +23,6 @@ import flixel.addons.editors.tiled.TiledTileSet;
 
         This is to explicitly reference all the classes in <package>, so that Type.resolveClass can resolve them from strings. Unfortunately you
         can't just do import package.*, since that doesn't bring in anything except the classes you reference in this file. 
-
 */
 
 /**

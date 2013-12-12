@@ -1,5 +1,8 @@
 package game;
 
+import flash.display.Bitmap;
+import flash.events.Event;
+import flash.net.URLRequest;
 import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -11,6 +14,8 @@ import flixel.util.FlxMath;
 
 import flixel.addons.ui.FlxInputText;
 import flixel.util.FlxPoint;
+
+import flash.display.Loader;
 
 class Player extends FlxSprite {
 	/** test */
@@ -27,7 +32,7 @@ class Player extends FlxSprite {
 
 		this.tweakable = ["x", "y", "velocity", "drag"];
 
-		this.makeGraphic(25, 25, 0xff00ff00);
+		this.loadGraphic("images/tileset.png");
 
 		this.drag.x = 2000;
 		this.drag.y = 2000;
@@ -107,6 +112,20 @@ class Player extends FlxSprite {
 		}
 	}
 
+	public function reloadGraphic() {
+		var loader:Loader = new Loader();
+		var sprite:Player = this;
+
+		function loadComplete(e:Event) {
+		    var loadedBitmap:Bitmap = cast(e.currentTarget.loader.content, Bitmap);
+		    sprite.loadGraphic(loadedBitmap.bitmapData);
+		}
+
+		loader.contentLoaderInfo.addEventListener(Event.COMPLETE, loadComplete);
+		loader.load(new URLRequest("../../../../../../../assets/images/tileset.png"));
+	}
+
+
 	public override function update() {
 		super.update();
 
@@ -122,6 +141,10 @@ class Player extends FlxSprite {
 		}
 		if (FlxG.keys.pressed.S) {
 			this.velocity.y = 300;
+		}
+
+		if (FlxG.keys.justPressed.R) {
+			reloadGraphic();
 		}
 
 		if (this.menuVisible) {

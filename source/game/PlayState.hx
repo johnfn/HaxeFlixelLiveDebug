@@ -108,5 +108,12 @@ class PlayState extends FlxState {
 	        level.loadObjects(this);
 		}
 #end
+
+        super.update();
+
+        Reg.inactives.setAll("active", true);
+        Reg.inactives.update();
+        Reg.inactives.setAll("active", false);
+
 	}	
 }
