@@ -117,6 +117,13 @@ class Player extends FlxSprite {
 			this.velocity.x = 300;
 		}
 
+		if (FlxG.keys.pressed.W) {
+			this.velocity.y = -300;
+		}
+		if (FlxG.keys.pressed.S) {
+			this.velocity.y = 300;
+		}
+
 		if (this.menuVisible) {
 			updateDebuggingMenu();
 		}

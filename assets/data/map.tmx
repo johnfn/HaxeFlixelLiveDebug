@@ -5,7 +5,7 @@
  </tileset>
  <layer name="Map" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   eJztw6ENADAIADAI//88NQ2CoNqkEQAAbKsmd3IYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgew0oACM=
+   eJzt1lEKgCAQBUBj739nf/tw0TJJZAYWREVqH4ilANASf38ATdfAeq94J+tl1tdsPm5Vkj0niE6tNtLXSManZTJyL6z+55nzT8tjxpfZyWQvM5nKYy/eW3vyHgYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4rgLV+gBg
   </data>
  </layer>
  <layer name="nocollide" width="100" height="100">

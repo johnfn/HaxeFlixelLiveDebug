@@ -9,6 +9,9 @@ import flixel.util.FlxSave;
 * free to simply ignore it or change it in any way you like.
 */
 class Reg {
+	static public var FPS:Int = 60;
+
+	static public var map:TiledLevel;
 
 	/** Current game state. */
 	static public var state:FlxState; 

@@ -45,7 +45,6 @@ class PlayState extends FlxState {
         }
 
         if (change) {
-        	trace(Reg.mapX, Reg.mapY);
             FlxG.camera.setBounds(Reg.mapX * Reg.mapWidth, Reg.mapY * Reg.mapHeight, Reg.mapWidth, Reg.mapHeight, true);
         }
     }
@@ -73,6 +72,8 @@ class PlayState extends FlxState {
         add(level.foregroundTiles);
         add(level.backgroundTiles);
         level.loadObjects(this);
+
+        Reg.map = level;
 
         Reg.player = p;
 

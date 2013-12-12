@@ -19,4 +19,12 @@ class Ball extends FlxSprite {
 
 		this.makeGraphic(25, 25, 0xff00ff00);
 	}
+
+	public override function update() {
+		this.velocity.y = 100;
+
+		super.update();
+
+		Reg.map.collideWithLevel(this);
+	}
 }
